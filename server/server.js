@@ -1,13 +1,7 @@
 const { ApolloServer } = require("apollo-server");
 const fs = require("fs");
 const path = require("path");
-
-//Resolvers can be implemented for each field of the query
-const resolvers = {
-    Query: {
-        title: () => `Hackernews clone`,
-    },
-};
+const { resolvers } = require("./resolvers");
 
 const server = new ApolloServer({
     typeDefs: fs.readFileSync(path.join(__dirname, "scheme.graphql"), "utf-8"),
