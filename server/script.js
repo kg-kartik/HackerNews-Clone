@@ -1,7 +1,11 @@
+//Standalone script
+//Here db is not conencted to the server
+
 const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
+//Used for querying the database
 const main = async () => {
     const newLink = await prisma.link.create({
         data: {
@@ -9,7 +13,6 @@ const main = async () => {
             url: "https://kg-kartik.github.io",
         },
     });
-    // console.log(newLink, "NEW");
     const allLinks = await prisma.link.findMany();
     console.log(allLinks);
 };
