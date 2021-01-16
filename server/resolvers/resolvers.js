@@ -4,10 +4,10 @@
 module.exports.resolvers = {
     Query: {
         title: () => {
-            "This is the API of a hackernews clone ";
+            return "This is the hackernews clone";
         },
-        feed: () => async (parent, args, context) => {
-            const data = await context.prisma.link.find();
+        feed: async (parent, args, context) => {
+            const data = await context.prisma.link.findMany();
             return data;
         },
     },
@@ -20,8 +20,10 @@ module.exports.resolvers = {
                     description: args.description,
                 },
             });
+            console.log("context", context.prisma.link);
+            console.log(newLink, "newLink");
 
-            context.pubSub.publish("NEW_LINK", newLink);
+            context.pubsub.publish("NEW_LINK", newLink);
             return newLink;
         },
     },
