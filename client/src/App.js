@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import LinkList from "./components/LinkList";
+import CreateLink from "./components/CreateLink";
 
 class App extends Component {
     render() {
@@ -7,6 +8,7 @@ class App extends Component {
             <div>
                 <h1> hello </h1>
                 <LinkList />
+                <CreateLink />
             </div>
         );
     }
